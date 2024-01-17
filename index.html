@@ -3,21 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EM CIMA</title>
+    <title>Quer Receber uma Visita Hoje?</title>
 </head>
 <body style="background-color: black; color: white; text-align: center;">
 
+    <h1 style="font-size: 24px;">Você quer receber uma visita hoje?</h1>
+
+    <!-- Botões para Sim e Não -->
+    <button onclick="playAudio()">Sim</button>
+    <button onclick="playAudio()">Não</button>
+
     <!-- Áudio com Autoplay usando ID do Vídeo do YouTube -->
     <iframe 
+        id="audioFrame"
         width="300" 
         height="56" 
-        src="https://www.youtube.com/embed/bpvxmn5m8Sk?autoplay=1" 
+        src="https://www.youtube.com/embed/bpvxmn5m8Sk?autoplay=0" 
         frameborder="0" 
         allowfullscreen
         style="visibility: hidden;">
     </iframe>
 
-    <p>EM BAIXO</p>
+    <script>
+        function playAudio() {
+            document.getElementById('audioFrame').src += '&autoplay=1';
+            document.getElementById('audioFrame').style.visibility = 'visible';
+        }
+    </script>
 
 </body>
 </html>
