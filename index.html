@@ -7,11 +7,11 @@
 </head>
 <body style="background-color: black; color: white; text-align: center;">
 
-    <h1 style="font-size: 24px;">Você quer receber uma visita hoje?</h1>
+    <h1 id="pergunta" style="font-size: 24px;">Você quer receber uma visita hoje?</h1>
 
     <!-- Botões para Sim e Não -->
-    <button onclick="playAudioAndHideButtons('Sim')">Sim</button>
-    <button onclick="playAudioAndHideButtons('Não')">Não</button>
+    <button onclick="playAudioAndHideElements('Sim')">Sim</button>
+    <button onclick="playAudioAndHideElements('Não')">Não</button>
 
     <!-- Áudio com Autoplay, sem controles visíveis e em looping -->
     <audio autoplay loop style="visibility: hidden;">
@@ -23,15 +23,16 @@
     <div id="mensagem" style="visibility: hidden; font-size: 18px; margin-top: 20px;"></div>
 
     <script>
-        function playAudioAndHideButtons(choice) {
+        function playAudioAndHideElements(choice) {
             // Tornar o áudio visível e iniciar a reprodução
             document.querySelector('audio').style.visibility = 'visible';
             document.querySelector('audio').play();
 
-            // Esconder os botões
+            // Esconder os botões e a pergunta
             document.querySelectorAll('button').forEach(button => {
                 button.style.display = 'none';
             });
+            document.getElementById('pergunta').style.display = 'none';
 
             // Agendar a exibição da mensagem após 1 segundo
             setTimeout(function () {
