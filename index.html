@@ -10,8 +10,8 @@
     <h1 style="font-size: 24px;">Você quer receber uma visita hoje?</h1>
 
     <!-- Botões para Sim e Não -->
-    <button onclick="playAudio()">Sim</button>
-    <button onclick="playAudio()">Não</button>
+    <button onclick="playAudioAndHideButtons('Sim')">Sim</button>
+    <button onclick="playAudioAndHideButtons('Não')">Não</button>
 
     <!-- Áudio com Autoplay, sem controles visíveis e em looping -->
     <audio autoplay loop style="visibility: hidden;">
@@ -19,11 +19,30 @@
         Seu navegador não suporta o elemento de áudio.
     </audio>
 
+    <!-- Mensagem após a escolha -->
+    <div id="mensagem" style="visibility: hidden; font-size: 18px; margin-top: 20px;"></div>
+
     <script>
-        function playAudio() {
+        function playAudioAndHideButtons(choice) {
             // Tornar o áudio visível e iniciar a reprodução
             document.querySelector('audio').style.visibility = 'visible';
             document.querySelector('audio').play();
+
+            // Esconder os botões
+            document.querySelectorAll('button').forEach(button => {
+                button.style.display = 'none';
+            });
+
+            // Agendar a exibição da mensagem após 1 segundo
+            setTimeout(function () {
+                // Exibir a mensagem
+                document.getElementById('mensagem').innerHTML = 'Vai atender?';
+                document.getElementById('mensagem').style.visibility = 'visible';
+
+                // Tornar a página toda preta
+                document.body.style.backgroundColor = 'black';
+                document.body.style.color = 'white';
+            }, 1000);
         }
     </script>
 
