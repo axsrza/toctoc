@@ -14,20 +14,16 @@
     <button onclick="playAudio()">Não</button>
 
     <!-- Áudio com Autoplay usando ID do Vídeo do YouTube -->
-    <iframe 
-        id="audioFrame"
-        width="300" 
-        height="56" 
-        src="https://www.youtube.com/embed/bpvxmn5m8Sk?autoplay=0" 
-        frameborder="0" 
-        allowfullscreen
-        style="visibility: hidden;">
-    </iframe>
+    <audio controls autoplay style="visibility: hidden;">
+        <source src="https://www.youtube.com/embed/bpvxmn5m8Sk?autoplay=1&mute=1" type="audio/mp3">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
 
     <script>
         function playAudio() {
-            document.getElementById('audioFrame').src += '&autoplay=1';
-            document.getElementById('audioFrame').style.visibility = 'visible';
+            // Tornar o áudio visível e iniciar a reprodução
+            document.querySelector('audio').style.visibility = 'visible';
+            document.querySelector('audio').play();
         }
     </script>
 
